@@ -1,7 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './star-wars.png';
 import './App.css';
 import Persons from './Persons';
+import Planets from './Planets';
+import Starships from './Starships';
+import Movies from './Movies';
 
 class App extends React.Component {
 
@@ -32,8 +35,18 @@ class App extends React.Component {
             target="_blank"
             rel="noopener noreferrer"
           >
+            </a>
             <Persons/>
-          </a>
+
+          <h2>Some of the Star Wars planets</h2>
+            <Planets/>
+
+          <h2>Star Wars Starships</h2>
+            <Starships/>
+
+          <h2>Star Wars Movies</h2>
+            <Movies/>
+          
         </header>
         </div>
     );
