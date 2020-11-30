@@ -4,14 +4,16 @@ class Persons extends React.Component {
 
     constructor() {
         super();
-        this.state = {extra_name:'Leia Organa'}
+        this.state = {
+            persons : ['Han Solo','Chewbacca','Leia Organa']
+        }
     }
     render() {
         return (
             <ul>
-                <li>Han Solo</li>
-                <li>Chewbacca</li>
-                <li>{this.state.extra_name}</li>
+                {this.state.persons.map(person => (
+                    <li key={person}>{person}</li>
+                ))}
             </ul>
         )
     }

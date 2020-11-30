@@ -4,13 +4,16 @@ class Starships extends React.Component {
 
     constructor() {
         super();
+        this.state = {
+            starships: ['Y-wing', 'Millennium Falcon','Star Destroyer']
+        }
     }
     render() {
         return (
             <ul>
-                <li>Y-wing</li>
-                <li>Millennium Falcon</li>
-                <li>Star Destroyer</li>
+                {this.state.starships.map(starship => (
+                    <li key={starship}>{starship}</li>
+                ))}
             </ul>
         )
     }
