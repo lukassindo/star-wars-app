@@ -1,4 +1,5 @@
 import React from 'react';
+import {starWars} from './data.js';
 
 class Starships extends React.Component {
 
@@ -11,7 +12,7 @@ class Starships extends React.Component {
     render() {
         return (
             <ul>
-                {this.state.starships.map(starship => (
+                {starWars.starships.map(starship => (
                     <li key={starship}>{starship}</li>
                 ))}
             </ul>

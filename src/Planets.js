@@ -1,17 +1,18 @@
 import React from 'react';
+import {starWars} from './data.js';
 
 class Planets extends React.Component {
 
     constructor() {
         super();
-        this.state = {
-        planets: ['Tatooine','Alderaan','Yavin IV']
-        }
+        // this.state = {
+        // planets: ['Tatooine','Alderaan','Yavin IV']
+        // }
     }
     render() {
         return (
             <ul>
-                {this.state.planets.map(planet => (
+                {starWars.planets.map(planet => (
                     <li key={planet}>{planet}</li>
                 ))}
             </ul>

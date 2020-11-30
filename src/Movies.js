@@ -1,4 +1,5 @@
 import React from 'react';
+import {starWars} from './data.js';
 
 class Movies extends React.Component {
 
@@ -11,7 +12,7 @@ class Movies extends React.Component {
     render() {
         return (
             <ul>
-               {this.state.movies.map(movie => (
+               {starWars.movies.map(movie => (
                     <li key={movie}>{movie}</li>
                 ))}
             </ul>
