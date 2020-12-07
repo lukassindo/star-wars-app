@@ -5,13 +5,18 @@ import Persons from './Persons';
 import Planets from './Planets';
 import Starships from './Starships';
 import Movies from './Movies';
+import Dummy from './Dummy';
+
 
 class App extends React.Component {
 
   constructor()  {
     super();
 
-    this.state = {data:'abc'}
+    this.state = {
+      data:'abc',
+    
+    }
 
 
   }
@@ -46,8 +51,14 @@ class App extends React.Component {
 
           <h2>Star Wars Movies</h2>
             <Movies/>
-          
+            <Dummy label={"submit"} color={"red"}/>
+            <Dummy label={"Go there"} color={"white"}/>
         </header>
+        <main>
+          
+        </main>
+
+
         </div>
     );
   }
