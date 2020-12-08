@@ -5,6 +5,15 @@ import Films from './Films';
 class TableRow extends React.Component {
     constructor(props) {
         super(props);
+
+        this.deleteRow= this.deleteRow.bind(this);
+    }
+    
+
+    deleteRow(e) {
+        const parent = e.target.parentNode.parentNode;
+        parent.className = 'hidden';
+        console.log(parent);
     }
 
     render() {
@@ -20,6 +29,7 @@ class TableRow extends React.Component {
                         <td key={personData.index}>{personData.skin_color}</td>
                         <td key={personData.index}>{personData.birth_year}</td>
                         <td><Films charFilms = {personData.films}/></td>
+                        <td><button onClick = {this.deleteRow}>Usuń</button></td>
                     </tr>
                     ))}   
 

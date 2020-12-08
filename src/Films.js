@@ -10,6 +10,7 @@ class Films extends React.Component {
         this.state = {
             films: props.charFilms,
         }
+        
     }
   
   
@@ -26,7 +27,7 @@ class Films extends React.Component {
                         )) : (
                             <p>Loading</p>
                          )
-                }
+                    }
                 </ul>
             )
 
