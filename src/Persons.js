@@ -19,7 +19,7 @@ class Persons extends React.Component {
     }
     
     render() {
-        console.log(this.state.persons);
+       console.log(this.state.persons)
         return (
             <div>
             <ul>

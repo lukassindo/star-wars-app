@@ -6,45 +6,31 @@ class Films extends React.Component {
 
     constructor(props) {
         super(props);
-     
+        
         this.state = {
-            films: [],
+            films: props.charFilms,
         }
-
-
-
-       
     }
-
-    componentDidMount(){
-                let movies;
-                const titles = [];
-                if (this.props.charFilms) {
-                    movies = this.props.charFilms.map(movie => {
-                        fetch(`${movie}`)
-                        .then((response) => response.json())
-                        .then((data) =>  titles.push(data.title))
-                        
-                    });
-                    this.setState({films: titles})
-                    console.log(titles)
-                }             
-   }
   
-   
-
+  
 
     render() {
-       
-       
-        return ( 
-            <ul>
-               {this.state.films.map((film, id) => (
-                   <li key={id}>{film}</li>
-               ))}
-               
-            </ul>
-        )
+        
+            console.log(this.props.charFilms)
+
+            return (
+                <ul>
+                    {this.props.charFilms ? 
+                         this.props.charFilms.map((film) => (
+                            <li key={film}>{film}</li>
+                        )) : (
+                            <p>Loading</p>
+                         )
+                }
+                </ul>
+            )
+
+      
         
     }
 

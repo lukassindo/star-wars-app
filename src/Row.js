@@ -12,7 +12,7 @@ class TableRow extends React.Component {
         return(
             <>
                 {this.props.personChar.map((personData, index) =>(
-                    <tr>
+                    <tr style={{border:"2px solid white"}}>
                         <td key={personData.index}>{personData.name}</td>
                         <td key={personData.index}>{personData.height}</td>
                         <td key={personData.index}>{personData.mass}</td>

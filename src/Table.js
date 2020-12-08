@@ -20,7 +20,7 @@ class StarWarsTable extends React.Component {
         return (
             <div>
                 <h2>All about characters</h2>
-                <table>
+                <table style={{borderCollapse:"collapse"}}>
                     <thead>
                         <tr>
                             <th>Name</th>
