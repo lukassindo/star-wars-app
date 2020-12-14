@@ -10,6 +10,8 @@ class Films extends React.Component {
         this.state = {
             films: props.charFilms,
         }
+
+        
         
     }
   

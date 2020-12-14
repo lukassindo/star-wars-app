@@ -32,10 +32,9 @@ class StarWarsTable extends React.Component {
     }
 
     retreatRows() {
-        let actualArray = [...this.state.persons];
-        actualArray = this.state.notChangedPersons;
-        console.log(actualArray);
-        this.setState({persons:actualArray});
+        // let actualArray = [...this.state.persons];
+        // actualArray = this.state.notChangedPersons;
+        this.setState({persons:this.state.notChangedPersons});
 
      }
 

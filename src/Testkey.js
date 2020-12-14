@@ -10,7 +10,6 @@ class TestKey extends React.Component {
             this.everySecond();
         }, 1000 )  
 
-
         
     }
      
