@@ -6,6 +6,7 @@ import Planets from './Planets';
 import Starships from './Starships';
 import Movies from './Movies';
 import Dummy from './Dummy';
+import TestKey from './Testkey';
 
 
 class App extends React.Component {
@@ -17,7 +18,7 @@ class App extends React.Component {
       data:'abc',
     
     }
-    this.retreatRows = this.retreatRows.bind(this);
+    
 
   }
   componentDidMount() {
@@ -26,14 +27,7 @@ class App extends React.Component {
     },1000); 
   }
 
-  retreatRows() {
-     const table = document.getElementById("chars");
-     let list = table.getElementsByClassName("hidden");
-     console.log(list)
-     while(list[0]) {
-      list[0].classList.remove("hidden");
-     }
-  }
+ 
 
 
   render() {
@@ -52,7 +46,7 @@ class App extends React.Component {
           </header>
           <main>
             <Persons/>
-            <button className="retreat_btn" onClick={this.retreatRows}>Przywróć usunięte wiersze</button>
+            
           <h2>Some of the Star Wars planets</h2>
             <Planets/>
 
@@ -63,6 +57,8 @@ class App extends React.Component {
             <Movies/>
             <Dummy label={"submit"} color={"red"}/>
             <Dummy label={"Go there"} color={"white"}/>
+
+            <TestKey/>
        
             
           
