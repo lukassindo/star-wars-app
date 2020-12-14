@@ -4,20 +4,26 @@ import StarWarsTable from './Table';
 
 class Persons extends React.Component {
 
-    constructor() {
-        super();
-        
+    constructor(props) {
+        super(props);
+        this.getData = this.getData.bind(this);
     }
 
 
+    getData(childData) { 
+        this.props.getDataFromPersons(childData);
+    }
+
+    
     
     render() {
+      
        
         return (
             <div>
             
 
-           <StarWarsTable />
+           <StarWarsTable dataChild = {this.getData}/>
             </div>
            
         )  

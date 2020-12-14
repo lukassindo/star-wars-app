@@ -11,26 +11,27 @@ import TestKey from './Testkey';
 
 class App extends React.Component {
 
-  constructor()  {
-    super();
+  constructor(props)  {
+    super(props);
 
     this.state = {
-      data:'abc',
-    
+      personsData: [],
     }
+    this.getData = this.getData.bind(this);
     
-
-  }
-  componentDidMount() {
-    setTimeout(()=> {
-      this.setState({data:"dfg"});
-    },1000); 
   }
 
+  
+
+
+  getData(childData) {
+    this.setState({personsData: childData});
+  }
  
 
 
   render() {
+    console.log(this.state.personsData);
     return (
       <div className="App">
         <header className="App-header">
@@ -45,10 +46,10 @@ class App extends React.Component {
             </a>
           </header>
           <main>
-            <Persons/>
+            <Persons getDataFromPersons = {this.getData}/>
             
-          <h2>Some of the Star Wars planets</h2>
-            <Planets/>
+          <h2>Our Heroes Planets</h2>
+            <Planets homes= {this.state.personsData}/>
 
           <h2>Star Wars Starships</h2>
             <Starships/>

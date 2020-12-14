@@ -15,13 +15,13 @@ class StarWarsTable extends React.Component {
 
         this.removeRow = this.removeRow.bind(this);
         this.retreatRows = this.retreatRows.bind(this);
+        this.sendData = this.sendData.bind(this);
     }
 
     componentDidMount() {
         fetch('https://swapi.dev/api/people/')  
         .then((response) => response.json())
-        .then((persons) => this.setState({persons: persons.results, notChangedPersons: persons.results}))
-        
+        .then((persons) => this.setState({persons: persons.results, notChangedPersons: persons.results}, this.sendData));   
     }
    
 
@@ -31,9 +31,11 @@ class StarWarsTable extends React.Component {
         this.setState({persons: newArray});
     }
 
+    sendData() {
+        this.props.dataChild(this.state.notChangedPersons);
+    }
+
     retreatRows() {
-        // let actualArray = [...this.state.persons];
-        // actualArray = this.state.notChangedPersons;
         this.setState({persons:this.state.notChangedPersons});
 
      }
@@ -64,7 +66,8 @@ class StarWarsTable extends React.Component {
                    
                 </table>
                 <button className="retreat_btn" onClick={this.retreatRows}>Przywróć usunięte wiersze</button>
-
+                <button className="retreat_btn" onClick={this.sendData}>Wyślij dane</button>
+               
 
             </div>
         )

@@ -11,7 +11,7 @@ class Films extends React.Component {
             films: props.charFilms,
         }
 
-        
+
         
     }
   
@@ -19,7 +19,6 @@ class Films extends React.Component {
 
     render() {
         
-            console.log(this.props.charFilms)
 
             return (
                 <ul>
