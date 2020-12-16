@@ -12,7 +12,7 @@ class Planets extends React.Component {
     }
 
     componentDidMount() {
-        let arrayOfPlanets = [];
+        let arrayOfPlanets = [];  
         this.props.homes.forEach(info => {
             let home = info.homeworld;
             fetch(`${home}`, {
@@ -34,7 +34,6 @@ class Planets extends React.Component {
      
 
     render() {
-        console.log(this.state.planets);
         return (
             <ul>
                 {this.props.homes.map((data,index) => (

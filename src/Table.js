@@ -45,7 +45,7 @@ class StarWarsTable extends React.Component {
         return (
             <div>
                 <h2>All about characters</h2>
-                <table id ="chars" style={{borderCollapse:"collapse"}}>
+                <table id ="chars" style={{borderCollapse:"collapse", margin: "0 auto"}}>
                     <thead>
                         <tr>
                             <th>Name</th>
