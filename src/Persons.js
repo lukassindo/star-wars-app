@@ -2,15 +2,17 @@ import React from 'react';
 import {starWars} from './data.js';
 import StarWarsTable from './Table';
 import Datatable from './Datatable';
+import peopleService from './services/people'
+
 
 class Persons extends React.Component {
+    HEADING = ['name','height','mass','eye color','skin color','birth year',  'films', 'remove row'];
 
     constructor(props) {
         super(props);
         this.getData = this.getData.bind(this);
 
         this.state = {
-            headings: ['name','height','mass','eye color','skin color','birth year', 'remove row'],
             rows: [],
             persons: [],
         }
@@ -20,16 +22,16 @@ class Persons extends React.Component {
         this.retreatRows = this.retreatRows.bind(this);
     }
 
-    componentDidMount() {
-        fetch('https://swapi.dev/api/people/')  
-        .then((response) => response.json())
-        .then((persons) => this.setState({persons: persons.results}, this.getValues));
+    async componentDidMount() {
+        const persons = await peopleService.getPeoples()
+            // .then((persons) => this.setState({persons: persons.results}, this.getValues));
+        this.setState({persons}, this.getValues);
     }
 
     getValues() {
         let newRows = [];
         this.state.persons.map(value => {
-        var results = [value.name, value.height, value.mass, value.eye_color, value.skin_color, value.birth_year];
+        var results = [value.name, value.height, value.mass, value.eye_color, value.skin_color, value.birth_year, value.films];
            newRows.push(results);
         })
         this.setState({rows: newRows});    
@@ -50,16 +52,15 @@ class Persons extends React.Component {
     }
 
     
-    
     render() {
-       console.log(this.state.persons);
+  
        
         return (
             <div>
             
 
            <StarWarsTable dataChild = {this.getData}/>
-           <Datatable headings = {this.state.headings} rows = {this.state.rows} removeMethod = {this.removeRow} retreat = {this.retreatRows}/>
+           <Datatable headings = {this.HEADING} rows = {this.state.rows} removeMethod = {this.removeRow} retreat = {this.retreatRows}/>
            <button className="retreat_btn" onClick={this.retreatRows}>Przywróć usunięte wiersze</button>
             </div>
            

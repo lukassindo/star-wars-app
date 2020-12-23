@@ -21,14 +21,11 @@ class App extends React.Component {
     
   }
 
-  
-
 
   getData(childData) {
     this.setState({personsData: childData});
   }
  
-
 
   render() {
     
@@ -60,11 +57,8 @@ class App extends React.Component {
             <Dummy label={"Go there"} color={"white"}/>
 
             <TestKey/>
-       
-            
-          
+                 
         </main>
-
 
         </div>
     );

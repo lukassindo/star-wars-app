@@ -1,14 +1,13 @@
 import React from 'react';
 import {starWars} from './data.js';
 import Datatable from './Datatable';
+import ship from './services/ship';
 
 class Starships extends React.Component {
-
+    HEADING = ['name','model','cost','crew','cargo'];
     constructor() {
         super();
         this.state = {
-
-            headings: ['name','model','crew', 'remove row'],
             rows: [],
             ships: [],
 
@@ -19,13 +18,14 @@ class Starships extends React.Component {
         this.retreatRows = this.retreatRows.bind(this);
     }
 
-    componentDidMount() {
-        fetch('https://swapi.dev/api/starships/')  
-        .then((response) => response.json())
-        .then((ships) => this.setState({ships: ships.results}, this.getValues));
+    async componentDidMount() {
+        const ships = await ship.getShips();
+        this.setState({ships},this.getValues);
     }
 
-
+    getValues() {
+        this.setState({rows: this.state.ships});    
+    }
 
     removeRow(rowIndex) {
         let newArray = [...this.state.rows];
@@ -37,19 +37,10 @@ class Starships extends React.Component {
        this.getValues();
     }
 
-    getValues() {
-        let newRows = [];
-        this.state.ships.map(value => {
-        var results = [value.name, value.model, value.crew];
-           newRows.push(results);
-        })
-        this.setState({rows: newRows});    
-    }
-
     render() {
         return (
             <>
-            <Datatable headings = {this.state.headings} rows = {this.state.rows} removeMethod = {this.removeRow}/>
+            <Datatable headings = {this.HEADING} rows = {this.state.rows} removeMethod = {this.removeRow}/>
             <button className="retreat_btn" onClick={this.retreatRows}>Przywróć usunięte wiersze</button>
             </>
         )
