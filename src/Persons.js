@@ -29,10 +29,13 @@ class Persons extends React.Component {
     }
 
     getValues() {
+        console.log(this.state.persons);
         let newRows = [];
         this.state.persons.map(value => {
-        var results = [value.name, value.height, value.mass, value.eye_color, value.skin_color, value.birth_year, value.films];
-           newRows.push(results);
+            console.log(value);
+        let results = [value.name, value.height, value.mass, value.eye_color, value.skin_color, value.birth_year, value.films[0]];
+            console.log(results);
+            newRows.push(results);
         })
         this.setState({rows: newRows});    
     }
@@ -53,7 +56,7 @@ class Persons extends React.Component {
 
     
     render() {
-  
+        
        
         return (
             <div>

@@ -22,7 +22,6 @@ class Planets extends React.Component {
 
         planetService.getPlanets()
             .then((planets) =>  {
-                console.log(planets);
                 this.setState({planets},this.getPlanetsInfo);
             });      
       
