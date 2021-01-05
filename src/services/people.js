@@ -1,36 +1,60 @@
+import data from "../data";
 
 
 
 const getPeoples = () => {
     return fetch('https://swapi.dev/api/people/')  
-        .then((response) => response.json())
+        // .then((response) => {
+            
+        //      return response.json();
+        // })
+
+        
         // .then((results) => {
-            
         //     let data = results.results;
-        //     console.log(data);
-        //     data = data.map((person) => {
-        //          person.films = person.films.map((film) =>  film.split('/')[5]);
-        //          return person;
-        //     });
-        //     return data;
-        // });
-        .then((results) => {
-            let data = results.results;
             
-            data = data.map((person)=> {               
-                let newFilm = [];
-                fetch(person.films[0]) 
-                    .then((response) => response.json())
-                    .then((result) => {  
-                        newFilm.push(result.title, result.episode_id, result.opening_crawl, result.director, result.producer, result.release_date);
-                        person.films = newFilm;
+        //     data = data.map((person)=> {               
+        //         let newFilm = [];
+        //         fetch(person.films[0]) 
+        //             .then((response) => response.json())
+        //             .then((result) => {  
+        //                 newFilm.push(result.title, result.episode_id, result.opening_crawl, result.director, result.producer, result.release_date);
+        //                 person.films = newFilm;
                         
-                    })
-                return person;        
-            });
+        //             })
+        //         return person;        
+        //     });
             
-            return data;
+        //     return data;
+
+           
+        // })
+    .then((response) => response.json())
+    .then((results) => {
+        let data = results.results;
+        return Promise.all(data.map(person => {
+            return fetch(person.films[0])
+                .then((response)=>response.json())
+                
+        }))
+    .then((result) => {
+        console.log(result);
+        data = data.map((person, index) => {
+            let newFilm = [];
+            newFilm.push(result[index].title, result[index].episode_id, result[index].opening_crawl, result[index].director, result[index].producer, result[index].release_date);
+            person.films = newFilm;
+            return person;
         })
+        console.log(data);
+        return data;
+        
+    })
+
+ 
+    })
+
+  
+    
        
 }
 

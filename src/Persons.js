@@ -20,25 +20,33 @@ class Persons extends React.Component {
         this.getValues = this.getValues.bind(this);
         this.removeRow = this.removeRow.bind(this);
         this.retreatRows = this.retreatRows.bind(this);
+        
     }
 
     async componentDidMount() {
-        const persons = await peopleService.getPeoples()
-            // .then((persons) => this.setState({persons: persons.results}, this.getValues));
+        const persons = await peopleService.getPeoples();
+        console.log('comp');
+                    // .then((persons) => this.setState({persons: persons.results}, this.getValues));
         this.setState({persons}, this.getValues);
     }
-
+    
+    
     getValues() {
-        console.log(this.state.persons);
+        let newArr = [...this.state.persons];
+        
         let newRows = [];
-        this.state.persons.map(value => {
-            console.log(value);
-        let results = [value.name, value.height, value.mass, value.eye_color, value.skin_color, value.birth_year, value.films[0]];
-            console.log(results);
+        newArr.forEach((item) =>{
+            let results = [item.name, item.height, item.mass, item.eye_color, item.skin_color, item.birth_year, item.films[0]];
             newRows.push(results);
-        })
+            return newRows;
+        });
+    
         this.setState({rows: newRows});    
+    
     }
+
+     
+
 
     removeRow(rowIndex) {
         let newArray = [...this.state.rows];
@@ -53,21 +61,24 @@ class Persons extends React.Component {
     getData(childData) { 
         this.props.getDataFromPersons(childData);
     }
-
+     
+    
     
     render() {
-        
        
+       console.log('render'); 
+    
         return (
-            <div>
-            
+            <div> 
 
-           <StarWarsTable dataChild = {this.getData}/>
-           <Datatable headings = {this.HEADING} rows = {this.state.rows} removeMethod = {this.removeRow} retreat = {this.retreatRows}/>
-           <button className="retreat_btn" onClick={this.retreatRows}>Przywróć usunięte wiersze</button>
+        <StarWarsTable dataChild = {this.getData}/>
+        
+        <Datatable headings = {this.HEADING} rows = {this.state.rows} removeMethod = {this.removeRow} retreat = {this.retreatRows}/>
+        <button className="retreat_btn" onClick={this.retreatRows}>Przywróć usunięte wiersze</button>
             </div>
-           
+        
         )  
+        
     }
 }
 
