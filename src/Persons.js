@@ -35,7 +35,7 @@ class Persons extends React.Component {
         let newArr = [...this.state.persons];
         
         let newRows = [];
-        newArr.forEach((item) =>{
+        newArr.forEach((item) => {
             let results = [item.name, item.height, item.mass, item.eye_color, item.skin_color, item.birth_year, item.films[0]];
             newRows.push(results);
             return newRows;
