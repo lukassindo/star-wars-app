@@ -50,7 +50,7 @@ class Starships extends React.Component {
             <>
             <Datatable headings = {this.HEADING} rows = {this.state.rows} removeMethod = {this.removeRow}/>
             <button className="retreat_btn" onClick={this.retreatRows}>Przywróć usunięte wiersze</button>
-            <Datatable headings = {this.HEADING2} rows = {this.state.stock} removeMethod = {this.removeRow}/>
+            {/* <Datatable headings = {this.HEADING2} rows = {this.state.stock} removeMethod = {this.removeRow}/> */}
             </>
         )
     }

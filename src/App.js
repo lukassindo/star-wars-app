@@ -7,7 +7,7 @@ import Starships from './Starships';
 import Movies from './Movies';
 import Dummy from './Dummy';
 import TestKey from './Testkey';
-import LoginForm from './LoginForm';
+import UserPanel from './UserPanel';
 
 class App extends React.Component {
 
@@ -56,7 +56,7 @@ class App extends React.Component {
             <Dummy label={"submit"} color={"red"}/>
             <Dummy label={"Go there"} color={"white"}/>
 
-            <LoginForm/>
+            <UserPanel/>
                  
         </main>
 
