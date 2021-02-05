@@ -54,7 +54,7 @@ class UserPanel extends React.Component {
 
     render() {
 
-       return (
+        return (
            <div className="forms">
                 {this.state.isLogged ? <Greeting user = {this.state.user}/> : <LoginForm submit={this.handleData} handleMethod={this.handleUserData}/>}
                 <select onChange={this.handleSelectData}>
@@ -64,7 +64,7 @@ class UserPanel extends React.Component {
                     ))}
                 </select>
             </div>
-       );
+        );
     }
 }
 

@@ -45,7 +45,7 @@ class Starships extends React.Component {
     }
 
     render() {
-        console.log(this.state.rows);
+
         return (
             <>
             <Datatable headings = {this.HEADING} rows = {this.state.rows} removeMethod = {this.removeRow}/>

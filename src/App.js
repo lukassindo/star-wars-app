@@ -8,6 +8,8 @@ import Movies from './Movies';
 import Dummy from './Dummy';
 import TestKey from './Testkey';
 import UserPanel from './UserPanel';
+import Chart from './Chart';
+import vehicleService from './services/vehicles';
 
 class App extends React.Component {
 
@@ -16,9 +18,17 @@ class App extends React.Component {
 
     this.state = {
       personsData: [],
+      vehicles: [],
+      titles: [],
     }
     this.getData = this.getData.bind(this);
     
+  }
+
+  async componentDidMount() {
+      const data = await vehicleService.getVehicles();
+      this.setState({titles: data[0], vehicles: data[1] });
+
   }
 
 
@@ -28,7 +38,6 @@ class App extends React.Component {
  
 
   render() {
-    
     return (
       <div className="App">
         <header className="App-header">
@@ -57,7 +66,7 @@ class App extends React.Component {
             <Dummy label={"Go there"} color={"white"}/>
 
             <UserPanel/>
-                 
+            <Chart titles={this.state.titles} vehicles={this.state.vehicles}/>
         </main>
 
         </div>

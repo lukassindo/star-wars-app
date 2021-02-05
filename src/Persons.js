@@ -25,7 +25,7 @@ class Persons extends React.Component {
 
     async componentDidMount() {
         const persons = await peopleService.getPeoples();
-        console.log('comp');
+     
                     // .then((persons) => this.setState({persons: persons.results}, this.getValues));
         this.setState({persons}, this.getValues);
     }
@@ -66,7 +66,7 @@ class Persons extends React.Component {
     
     render() {
        
-       console.log('render'); 
+ 
     
         return (
             <div> 

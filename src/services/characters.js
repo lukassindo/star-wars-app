@@ -11,7 +11,7 @@ const getCharacters = () => {
           
         })
         .then(info => {
-            console.log(info);
+    
             results = results.map((item, index) => {
                 item.hair_color = info[index].result.properties.hair_color;
                 return item;

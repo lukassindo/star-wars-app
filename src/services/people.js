@@ -38,14 +38,14 @@ const getPeoples = () => {
                 
         }))
     .then((result) => {
-        console.log(result);
+   
         data = data.map((person, index) => {
             let newFilm = [];
             newFilm.push(result[index].title, result[index].episode_id, result[index].opening_crawl, result[index].director, result[index].producer, result[index].release_date);
             person.films = newFilm;
             return person;
         })
-        console.log(data);
+   
         return data;
         
     })

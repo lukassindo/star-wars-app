@@ -7,7 +7,7 @@ const getStockInfo = () => {
           
         //    console.log(typeof data);
 
-           for (let key in data) {
+        for (let key in data) {
                let dataObj = [];
             // skip loop if the property is from prototype
             if (!data.hasOwnProperty(key)) continue;
