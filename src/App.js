@@ -20,6 +20,7 @@ class App extends React.Component {
       personsData: [],
       vehicles: [],
       titles: [],
+      fetched: false,
     }
     this.getData = this.getData.bind(this);
     
@@ -27,7 +28,7 @@ class App extends React.Component {
 
   async componentDidMount() {
       const data = await vehicleService.getVehicles();
-      this.setState({titles: data[0], vehicles: data[1] });
+      this.setState({titles: data[0], vehicles: data[1], fetched: true });
 
   }
 
@@ -38,6 +39,7 @@ class App extends React.Component {
  
 
   render() {
+    console.log(this.state.titles);
     return (
       <div className="App">
         <header className="App-header">
@@ -66,7 +68,10 @@ class App extends React.Component {
             <Dummy label={"Go there"} color={"white"}/>
 
             <UserPanel/>
+            {this.state.fetched &&
             <Chart titles={this.state.titles} vehicles={this.state.vehicles}/>
+            }
+            
         </main>
 
         </div>
