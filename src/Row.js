@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StarWarsFilms from './Films';
+import { ThemeContext } from './contexts';
 
 class TableRow extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class TableRow extends React.Component {
                         <td>{personData.skin_color}</td>
                         <td>{personData.birth_year}</td>
                         <td><StarWarsFilms charFilms = {personData.films}/></td>
-                        <td><button onClick = {()=> {this.props.removeMethod(index)}}>Usuń</button></td>
+                        <td><button style={{background: this.context.background, color: this.context.color}} onClick = {()=> {this.props.removeMethod(index)}}>Usuń</button></td>
                     </tr>
                     ))}   
 
@@ -36,5 +37,5 @@ class TableRow extends React.Component {
 
 }
 
-
+TableRow.contextType=ThemeContext;
 export default TableRow; 

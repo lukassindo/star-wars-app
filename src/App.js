@@ -10,6 +10,8 @@ import TestKey from './Testkey';
 import UserPanel from './UserPanel';
 import Chart from './Chart';
 import vehicleService from './services/vehicles';
+import { ThemeContext, subject } from './contexts';
+import {starWars} from './data.js';
 
 class App extends React.Component {
 
@@ -21,8 +23,11 @@ class App extends React.Component {
       vehicles: [],
       titles: [],
       fetched: false,
+      theme: subject.light,
+      colorChanged: true,
     }
     this.getData = this.getData.bind(this);
+    this.changeBackground = this.changeBackground.bind(this);
     
   }
 
@@ -36,11 +41,20 @@ class App extends React.Component {
   getData(childData) {
     this.setState({personsData: childData});
   }
+
+  changeBackground() {
+    if (this.state.colorChanged) {
+      this.setState({theme: subject.dark, colorChanged: false})
+    } else 
+      { this.setState({theme: subject.light, colorChanged: true});}
+    
+  }
  
 
   render() {
-    console.log(this.state.titles);
+    
     return (
+      <ThemeContext.Provider value={this.state.theme}>
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -63,7 +77,7 @@ class App extends React.Component {
             <Starships/>
 
           <h2>Star Wars Movies</h2>
-            <Movies/>
+            <Movies movies={starWars.movies}/>
             <Dummy label={"submit"} color={"red"}/>
             <Dummy label={"Go there"} color={"white"}/>
 
@@ -71,10 +85,13 @@ class App extends React.Component {
             {this.state.fetched &&
             <Chart titles={this.state.titles} vehicles={this.state.vehicles}/>
             }
+
+            <button onClick={this.changeBackground}>Toggle background</button>
             
         </main>
 
         </div>
+        </ThemeContext.Provider>
     );
   }
 }

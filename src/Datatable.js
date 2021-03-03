@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Cell from './Cell';
+import { ThemeContext } from './contexts';
 
 
  class DataTable extends React.Component {
@@ -35,7 +36,7 @@ import Cell from './Cell';
             />
           )
         })}
-        <td className="Cell"><button onClick = {()=> {this.props.removeMethod(rowIndex)}}>Usuń</button></td>
+        <td className="Cell"><button style={{background: this.context.background, color: this.context.color}} onClick = {()=> {this.props.removeMethod(rowIndex)}}>Usuń</button></td>
       </tr>
     )
   };
@@ -62,5 +63,8 @@ import Cell from './Cell';
     );
   }
 }
+
+
+DataTable.contextType=ThemeContext;
 
 export default DataTable
