@@ -8,7 +8,8 @@ export default function(props) {
 
     return (
         <ul>
-               <SingleMovie movies={props.movies}/>
+            <h2>Star Wars Movies</h2>
+            <SingleMovie movies={props.movies}/>
         </ul>
     )
 } 

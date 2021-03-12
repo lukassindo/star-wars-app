@@ -10,5 +10,5 @@ export const subject = {
         color: "#fff",
     }
 }
-export const ThemeContext = React.createContext(subject.light);
+export const ThemeContext = React.createContext();
 

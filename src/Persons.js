@@ -70,11 +70,11 @@ class Persons extends React.Component {
     
         return (
             <div> 
-
-        <StarWarsTable dataChild = {this.getData}/>
-        
-        <Datatable headings = {this.HEADING} rows = {this.state.rows} removeMethod = {this.removeRow} retreat = {this.retreatRows}/>
-        <button className="retreat_btn" onClick={this.retreatRows}>Przywróć usunięte wiersze</button>
+                <h1>Star Wars Characters </h1>
+                <StarWarsTable dataChild = {this.getData}/>
+                
+                <Datatable headings = {this.HEADING} rows = {this.state.rows} removeMethod = {this.removeRow} retreat = {this.retreatRows}/>
+                <button className="retreat_btn" onClick={this.retreatRows}>Przywróć usunięte wiersze</button>
             </div>
         
         )  

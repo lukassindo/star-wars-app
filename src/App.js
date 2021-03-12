@@ -5,13 +5,13 @@ import Persons from './Persons';
 import Planets from './Planets';
 import Starships from './Starships';
 import Movies from './Movies';
-import Dummy from './Dummy';
-import TestKey from './Testkey';
-import UserPanel from './UserPanel';
-import Chart from './Chart';
 import vehicleService from './services/vehicles';
 import { ThemeContext, subject } from './contexts';
 import {starWars} from './data.js';
+import NewsletterForm from './NewsletterForm';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import Other from './Other';
+import Home from './Home';
 
 class App extends React.Component {
 
@@ -47,7 +47,6 @@ class App extends React.Component {
       this.setState({theme: subject.dark, colorChanged: false})
     } else 
       { this.setState({theme: subject.light, colorChanged: true});}
-    
   }
  
 
@@ -55,10 +54,13 @@ class App extends React.Component {
     
     return (
       <ThemeContext.Provider value={this.state.theme}>
+       
+
+      
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1>Star Wars Characters {this.state.data}</h1>
+          
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -66,29 +68,65 @@ class App extends React.Component {
             rel="noopener noreferrer"
           >
             </a>
+
+
+        <Router>
+          <div>
+            <ul className="navigation">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/persons">Persons</Link>
+              </li>
+              <li>
+                <Link to="/planets">Planets</Link>
+              </li>
+              <li>
+                <Link to="/starships">Starships</Link>
+              </li>
+              <li>
+                <Link to="/movies">Movies</Link>
+              </li>
+              <li>
+                <Link to="/newsletter">Newsletter</Link>
+              </li>
+              <li>
+                <Link to="/other">Other</Link>
+              </li>
+            </ul>
+
+            <hr />
+
+          
+            <Switch>
+              <Route exact path="/">
+                <Home/>
+              </Route>
+              <Route path="/persons">
+                <Persons getDataFromPersons = {this.getData}/>
+              </Route>
+              <Route path="/planets">
+                <Planets homes= {this.state.personsData}/>
+              </Route>
+              <Route path="/starships">
+                <Starships />
+              </Route>
+              <Route path="/movies">
+                <Movies movies={starWars.movies}/>
+              </Route>
+              <Route path="/newsletter">
+                <NewsletterForm />
+              </Route>
+              <Route path="/other">
+                <Other fetched={this.state.fetched} titles={this.state.titles} vehicles={this.state.vehicles} changeBackground = {this.changeBackground}/>
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+         
           </header>
-          <main>
-            <Persons getDataFromPersons = {this.getData}/>
-            
-          <h2>Our Heroes Planets</h2>
-            <Planets homes= {this.state.personsData}/>
-
-          <h2>Star Wars Starships</h2>
-            <Starships/>
-
-          <h2>Star Wars Movies</h2>
-            <Movies movies={starWars.movies}/>
-            <Dummy label={"submit"} color={"red"}/>
-            <Dummy label={"Go there"} color={"white"}/>
-
-            <UserPanel/>
-            {this.state.fetched &&
-            <Chart titles={this.state.titles} vehicles={this.state.vehicles}/>
-            }
-
-            <button onClick={this.changeBackground}>Toggle background</button>
-            
-        </main>
+       
 
         </div>
         </ThemeContext.Provider>
