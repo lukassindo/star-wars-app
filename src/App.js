@@ -2,8 +2,8 @@ import React from 'react';
 import logo from './star-wars.png';
 import './App.css';
 import Persons from './Persons';
-import Planets from './Planets';
-import Starships from './Starships';
+import {PlanetsTable, StarshipsTable} from './MainTable';
+
 import Movies from './Movies';
 import vehicleService from './services/vehicles';
 import { ThemeContext, subject } from './contexts';
@@ -107,10 +107,10 @@ class App extends React.Component {
                 <Persons getDataFromPersons = {this.getData}/>
               </Route>
               <Route path="/planets">
-                <Planets homes= {this.state.personsData}/>
+                <PlanetsTable homes= {this.state.personsData}/>
               </Route>
               <Route path="/starships">
-                <Starships />
+                <StarshipsTable />
               </Route>
               <Route path="/movies">
                 <Movies movies={starWars.movies}/>
